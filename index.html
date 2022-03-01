@@ -54,7 +54,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#" id="icon-nav"> <i class="fa-solid fa-gear"></i> </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   <a class="nav-link" href="#" id="icon-nav"> <i class="fa-regular fa-circle-user"></i> </a>
                 </li>
               </ul>
@@ -74,11 +74,49 @@
       </div>
     </header>
     <main>
-      <div class="section-1 container-fluid">
-
+ <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content modal-view">
+            <div class="modal-header">
+              <div class="logo-auth">
+                <i class="fa-solid fa-laptop-code"></i>
+                <a class="navbar-brand link-logo-auth" href="#">WebForYou</a>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-wrapper">
+              <h2 class="header-form-auth">Введите логин и пароль</h2>
+              <div class="link-registr-wrapp">
+                Впервые на сайте? Пройдите
+                <a href="registr.html" class="link-registr">регистрацию</a>
+              </div>
+              <form action="#">
+                <div class="row form-auth-flex">
+                  <div class="col-auto form-margin-top-bottom">
+                    <input type="text" id="inputLogin" class="form-control" placeholder="Логин">
+                  </div>
+                  <div class="col-auto form-margin-top-bottom">
+                    <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" placeholder="Пароль">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-auth">Войти</button>
+                </div>
+              </form>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Understood</button>
+            </div> -->
+          </div>
+        </div>
       </div>
+ <!-- Modal -->
+      <div class="section-1 container-fluid"> </div>
       <div class="section container-fluid p-5">
-          <div class="row height-info-bloсk">
+        <div class="close">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="row height-info-bloсk">
             <div class="col-md-6 col-sm-12 section-image px-3 order-1"> 
               <!-- //px-3 -->
               <div class="img-wrapper">
@@ -88,10 +126,6 @@
             <div class="col-md-6 col-sm-12 section-text-mobile my-md-auto my-4 order-2">
               <!-- my-md-auto my-4 -->
               <div class="h-flex-container">
-                <!-- <div class="technology">
-                  <i class="fa-brands fa-js-square"></i>
-                  <h3>JS</h3>
-                </div> -->
                 <div class="user">
                   <div class="logo-img-wrapper">
                     <img class="avatar" src="img/avatars/Фото_Артём.jpg" alt="Аватар пользователя">
@@ -128,9 +162,16 @@
               </div>
 
             </div>
-          </div>
+        </div>
+        <div class="comment-like">
+          <i class="fa-regular fa-comment post-comment"></i>
+          <i class="fa-regular fa-heart post-like"></i>
+        </div>
       </div>
       <div class="section container-fluid p-5">
+        <div class="close">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
         <div class="row height-info-bloсk">
           <div class="col-md-6 col-sm-12 section-image px-3 order-1"> 
             <!-- //px-3 -->

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registr</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/iconsfont.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="fixed-top">
+      <div>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+          <div class="container-fluid">
+            <div class="logo">
+              <i class="fa-solid fa-laptop-code"></i>
+              <a class="navbar-brand" href="#">WebForYou</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Категории
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">HTML</a></li>
+                    <li><a class="dropdown-item" href="#">CSS</a></li>
+                    <li><a class="dropdown-item" href="#">JS</a></li>
+                    <li><a class="dropdown-item" href="#">PHP</a></li>
+                    <li><a class="dropdown-item" href="#">Python</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Кабинет</a>
+                </li>
+              </ul>
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="#" id="icon-nav"> <i class="fa-solid fa-gear"></i> </a>
+                </li>
+                <li class="nav-item"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  <a class="nav-link" href="#" id="icon-nav"> <i class="fa-regular fa-circle-user"></i> </a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2 max-with" type="search" placeholder="Поиск" aria-label="Search" id="search-nav">
+                <button class="btn btn-color" type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+ <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content modal-view">
+            <div class="modal-header">
+              <div class="logo-auth">
+                <i class="fa-solid fa-laptop-code"></i>
+                <a class="navbar-brand link-logo-auth" href="#">WebForYou</a>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-wrapper">
+              <h2 class="header-form-auth">Введите логин и пароль</h2>
+              <div class="link-registr-wrapp">
+                Впервые на сайте? Пройдите
+                <a href="#" class="link-registr">регистрацию</a>
+              </div>
+              <form action="#">
+                <div class="row form-auth-flex">
+                  <div class="col-auto form-margin-top-bottom">
+                    <input type="text" id="inputLogin" class="form-control" placeholder="Логин">
+                  </div>
+                  <div class="col-auto form-margin-top-bottom">
+                    <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" placeholder="Пароль">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-auth">Войти</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+ <!-- Modal -->
+    <div class="section-1 container-fluid"></div>
+    <div class="container-fluid section-registr">
+        <div class="wrapper-form-registr">
+            <!-- form-registr -->
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputLogin1" class="form-label">Логин</label>
+                  <input type="text" class="form-control" id="exampleInputLogin1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <div id="passHelp" class="form-text">
+                    Ваш пароль должен состоять из 8-20 символов, содержать буквы и цифры 
+                    и не должен содержать пробелов, специальных символов или эмодзи. 
+                 </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword2" class="form-label">Пароль повторно</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2">
+                    <div id="passHelp" class="form-text">
+                        Пароли должны совпадать.
+                   </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-registr">Зарегистрироваться</button>
+            </form>
+            <!-- form-registr -->
+        </div>
+    </div>
+    </main>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
