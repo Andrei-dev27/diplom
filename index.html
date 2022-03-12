@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>diplom</title>
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <title>Diplom</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/iconsfont.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -17,45 +15,50 @@
       <div>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
           <div class="container-fluid">
+            <!-- логотип -->
             <div class="logo">
               <i class="fa-solid fa-laptop-code"></i>
-              <a class="navbar-brand" href="#">WebForYou</a>
+              <a class="navbar-brand" href="index.html">WebForYou</a>
             </div>
-            <!-- <i class="fa-solid fa-laptop-code"></i>
-            <a class="navbar-brand" href="#">WebForYou</a> -->
+            <!-- кнопка бургер -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- сворачиваемое содржимое -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- левая часть -->
+              <ul class="navbar-nav top-menu me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                  <a class="nav-link" aria-current="page" href="#">Главная</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Категории
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">HTML</a></li>
-                    <li><a class="dropdown-item" href="#">CSS</a></li>
-                    <li><a class="dropdown-item" href="#">JS</a></li>
-                    <li><a class="dropdown-item" href="#">PHP</a></li>
-                    <li><a class="dropdown-item" href="#">Python</a></li>
-                  </ul>
+                  <div class="nav-link dropdown-color">
+                    <a class="dropdown-toggle dropdown-color-a" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Категории
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">HTML</a></li>
+                      <li><a class="dropdown-item" href="#">CSS</a></li>
+                      <li><a class="dropdown-item" href="#">JS</a></li>
+                      <li><a class="dropdown-item" href="#">PHP</a></li>
+                      <li><a class="dropdown-item" href="#">Python</a></li>
+                    </ul>
+                  </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Кабинет</a>
+                  <a class="nav-link" href="#">Создать сообщение</a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li> -->
               </ul>
+              <!-- правая часть -->
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="#" id="icon-nav"> <i class="fa-solid fa-gear"></i> </a>
-                </li>
+                </li> -->
                 <li class="nav-item"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                  <a class="nav-link" href="#" id="icon-nav"> <i class="fa-regular fa-circle-user"></i> </a>
+                  <a class="nav-link user-home" href="#" id="icon-nav">
+                    <!-- data-bs-toggle="tooltip" data-bs-placement="bottom" title="Авторизация" -->
+                    <i class="fa-circle-user fa-regular icon-color"></i> 
+                  </a>
                 </li>
               </ul>
               <form class="d-flex">
@@ -63,18 +66,12 @@
                 <button class="btn btn-color" type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
               </form>
             </div>
-            <!-- <div class="form-search">
-            </div> -->
-            <!-- <form class="d-flex collapse" id="searchForm">
-              <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" id="search-padding">
-            </form>
-            <button class="btn btn-color" type="button" data-bs-toggle="collapse" data-bs-target="#searchForm" aria-controls="searchForm" aria-expanded="false"> <i class="fa-solid fa-magnifying-glass"></i> </button> -->
           </div>
         </nav>
       </div>
     </header>
     <main>
- <!-- Modal -->
+ <!-- ModalAuth-->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content modal-view">
@@ -110,36 +107,69 @@
           </div>
         </div>
       </div>
- <!-- Modal -->
+      <!-- div под header-->
       <div class="section-1 container-fluid"> </div>
+      <!-- основной информационный блок -->
       <div class="section container-fluid p-5">
+        <!-- кнопка удаления -->
         <div class="close">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#closeModal">
+          </button>
+<!-- ModalClose -->
+          <div class="modal fade" id="closeModal" tabindex="-1" aria-labelledby="closeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header modal-header-flex">
+                  <!-- <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5> -->
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-footer-flex">
+                    <div class="modal-question">
+                      <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5>
+                    </div>
+                    <div class="modal-btn-flex">
+                      <button type="button" class="btn btn-primary btn-footer-width" data-bs-dismiss="modal">Отмена</button>
+                      <button type="button" class="btn btn-primary btn-footer-width">Удалить</button>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer modal-footer-flex">
+
+                </div> -->
+              </div>
+            </div>
+          </div>
+<!-- ModalClose -->
         </div>
         <div class="row height-info-bloсk">
+            <!-- блок с картинкой -->
             <div class="col-md-6 col-sm-12 section-image px-3 order-1"> 
-              <!-- //px-3 -->
               <div class="img-wrapper">
                 <img src="img/velocity.png" alt="post image">
               </div>
             </div>
+            <!-- блок с сообщением -->
             <div class="col-md-6 col-sm-12 section-text-mobile my-md-auto my-4 order-2">
-              <!-- my-md-auto my-4 -->
               <div class="h-flex-container">
+                <!-- пользователь, технология, дата -->
                 <div class="user">
-                  <div class="logo-img-wrapper">
-                    <img class="avatar" src="img/avatars/Фото_Артём.jpg" alt="Аватар пользователя">
-                  </div>
-                  <div class="date-technology">
-                    <div class="technology"> 
-                      <i class="fa-brands fa-js-square"></i>
+                  <a href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="<div> Какой-то user </div>">
+                    <div class="logo-img-wrapper">
+                      <img class="avatar" src="img/avatars/avatar_user.jpg" alt="Аватар пользователя">
                     </div>
+                  </a> 
+                  <div class="date-technology">
+                    <a href="#">
+                      <div class="technology"> 
+                        <i class="fa-brands fa-js-square"></i>
+                      </div>
+                    </a>
                     <time class="post-add">
                       07.01.21 в 15:52
                     </time>
                     <!-- <a class="user-link" href="#">Артём</a> -->
                   </div>
                 </div>
+                <!-- текст сообщения -->
                 <div class="text-post">
                   <p>
                     По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
@@ -147,114 +177,510 @@
                     По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
                   </p>
                 </div>
-                <div class="resource">
-                  <a class="resource-link" href="#">
-                    <!-- <i class="fa-solid fa-file-lines"></i>  -->
-                    <div class="text-link">Читать</div> 
+                <!-- ссылка на ресурс -->
+                <a class="resource-link" href="#">
+                  <div class="resource" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="http//cccewefcdc.ru">
+                    <div class="text-link"> Читать </div>
                     <i class="fa-solid fa-arrow-right-long"></i>
-                  </a>
+                  </div>
+                </a>
+                <!-- лайк-комментарий -->
+                <div class="post-like-comment">
+                  <div class="comment-like">
+                    <button type="button" class="like-post-button"> 
+                      <i class="like-selector icon-color fa-thumbs-up fa-regular"></i>
+                      <div class="counter-likes">7</div> 
+                    </button> 
+                  </div>
+                  <div class="comment-like"> 
+                    <button type="button" class="like-post-button post-button-selector" data-bs-toggle="modal" data-bs-target="#staticComment"> 
+                      <i class="comment-selector icon-color fa-regular fa-comment"></i>
+                      <div class="counter-comments">8</div>
+                    </button> 
+                  </div>
                 </div>
-                <!-- <div class="time-add">
-                  <time class="post-add">
-                    07.01.21 в 15:52
-                  </time>
+              </div>
+            </div>
+        </div>
+
+<!-- ModalComment -->
+         <div class="modal fade" id="staticComment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticCommentLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="logo-auth">
+                  <i class="fa-solid fa-laptop-code"></i>
+                  <a class="navbar-brand link-logo-auth" href="#">WebForYou</a>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="#" >
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Добавьте комментарий</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <button class="btn btn-primary btn-add-comment" type="submit">Добавить</button>
+                </form>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
+        </div>
+ <!-- ModalComment -->
+      </div>
+      <!-- основной информационный блок -->
+      <div class="section container-fluid p-5">
+        <!-- кнопка удаления -->
+        <div class="close">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#closeModal">
+          </button>
+<!-- ModalClose -->
+          <div class="modal fade" id="closeModal" tabindex="-1" aria-labelledby="closeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header modal-header-flex">
+                  <!-- <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5> -->
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-footer-flex">
+                    <div class="modal-question">
+                      <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5>
+                    </div>
+                    <div class="modal-btn-flex">
+                      <button type="button" class="btn btn-primary btn-footer-width" data-bs-dismiss="modal">Отмена</button>
+                      <button type="button" class="btn btn-primary btn-footer-width">Удалить</button>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer modal-footer-flex">
+
                 </div> -->
               </div>
-
             </div>
-        </div>
-        <div class="comment-like">
-          <i class="fa-regular fa-comment post-comment"></i>
-          <i class="fa-regular fa-heart post-like"></i>
-        </div>
-      </div>
-      <div class="section container-fluid p-5">
-        <div class="close">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+<!-- ModalClose -->
         </div>
         <div class="row height-info-bloсk">
-          <div class="col-md-6 col-sm-12 section-image px-3 order-1"> 
-            <!-- //px-3 -->
-            <div class="img-wrapper">
-              <img src="img/secure.png" alt="post image">
+            <!-- блок с картинкой -->
+            <div class="col-md-6 col-sm-12 section-image px-3 order-1"> 
+              <div class="img-wrapper">
+                <img src="img/secure.png" alt="post image">
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-sm-12 section-text-mobile my-md-auto my-4 order-2">
-            <!-- my-md-auto my-4 -->
-            <div class="h-flex-container">
-              <!-- <div class="technology">
-                <i class="fa-brands fa-js-square"></i>
-                <h3>JS</h3>
-              </div> -->
-              <div class="user">
-                <div class="logo-img-wrapper">
-                  <img class="avatar" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
-                </div>
-                <div class="date-technology">
-                  <div class="technology"> 
-                    <i class="fa-brands fa-php"></i>
+            <!-- блок с сообщением -->
+            <div class="col-md-6 col-sm-12 section-text-mobile my-md-auto my-4 order-2">
+              <div class="h-flex-container">
+                <!-- пользователь, технология, дата -->
+                <div class="user">
+                  <a href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="<div> Какой-то user </div>">
+                    <div class="logo-img-wrapper">
+                      <img class="avatar" src="img/avatars/Фото_Артём.jpg" alt="Аватар пользователя">
+                    </div>
+                  </a> 
+                  <div class="date-technology">
+                    <a href="#">
+                      <div class="technology"> 
+                        <i class="fa-brands fa-js-square"></i>
+                      </div>
+                    </a>
+                    <time class="post-add">
+                      07.01.21 в 15:52
+                    </time>
+                    <!-- <a class="user-link" href="#">Артём</a> -->
                   </div>
-                  <time class="post-add">
-                    07.01.21 в 15:52
-                  </time>
-                  <!-- <a class="user-link" href="#">Артём</a> -->
+                </div>
+                <!-- текст сообщения -->
+                <div class="text-post">
+                  <p>
+                    По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                    который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                    По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                  </p>
+                </div>
+                <!-- ссылка на ресурс -->
+                <a class="resource-link" href="#">
+                  <div class="resource" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="http//cccewefcdc.ru">
+                    <div class="text-link"> Читать </div>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                  </div>
+                </a>
+                <!-- лайк-комментарий -->
+                <div class="post-like-comment">
+                  <div class="comment-like">
+                    <button type="button" class="like-post-button"> 
+                      <i class="like-selector icon-color fa-thumbs-up fa-regular"></i>
+                      <div class="counter-likes">7</div> 
+                    </button> 
+                  </div>
+                  <div class="comment-like"> 
+                    <button type="button" class="like-post-button post-button-selector" data-bs-toggle="modal" data-bs-target="#staticComment"> 
+                      <i class="comment-selector icon-color fa-regular fa-comment"></i>
+                      <div class="counter-comments">8</div>
+                    </button> 
+                  </div>
                 </div>
               </div>
-              <div class="text-post">
-                <p>
-                  По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
-                  который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
-                  По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
-                </p>
-              </div>
-              <div class="resource">
-                <a class="resource-link" href="#">
-                  <!-- <i class="fa-solid fa-file-lines"></i>  -->
-                  <div class="text-link">Читать</div> 
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-              </div>
-              <!-- <div class="time-add">
-                <time class="post-add">
-                  07.01.21 в 15:52
-                </time>
-              </div> -->
             </div>
+        </div>
 
+<!-- ModalComment -->
+         <div class="modal fade" id="staticComment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticCommentLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="logo-auth">
+                  <i class="fa-solid fa-laptop-code"></i>
+                  <a class="navbar-brand link-logo-auth" href="#">WebForYou</a>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="#" >
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Добавьте комментарий</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <button class="btn btn-primary btn-add-comment" type="submit">Добавить</button>
+                </form>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
-      <!-- <div class="bg-light-blue">
+ <!-- ModalComment -->
+      </div>
+      <!-- основной информационный блок -->
+      <div class="section container-fluid p-5">
+        <!-- кнопка удаления -->
+        <div class="close">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#closeModal">
+          </button>
+<!-- ModalClose -->
+          <div class="modal fade" id="closeModal" tabindex="-1" aria-labelledby="closeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header modal-header-flex">
+                  <!-- <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5> -->
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-footer-flex">
+                    <div class="modal-question">
+                      <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5>
+                    </div>
+                    <div class="modal-btn-flex">
+                      <button type="button" class="btn btn-primary btn-footer-width" data-bs-dismiss="modal">Отмена</button>
+                      <button type="button" class="btn btn-primary btn-footer-width">Удалить</button>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer modal-footer-flex">
 
-      </div> -->
+                </div> -->
+              </div>
+            </div>
+          </div>
+<!-- ModalClose -->
+        </div>
+        <div class="row height-info-bloсk">
+            <!-- блок с картинкой -->
+            <div class="col-md-6 col-sm-12 section-image px-3 order-1"> 
+              <div class="img-wrapper">
+                <img src="img/velocity.png" alt="post image">
+              </div>
+            </div>
+            <!-- блок с сообщением -->
+            <div class="col-md-6 col-sm-12 section-text-mobile my-md-auto my-4 order-2">
+              <div class="h-flex-container">
+                <!-- пользователь, технология, дата -->
+                <div class="user">
+                  <a href="#" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="<div> Какой-то user </div>">
+                    <div class="logo-img-wrapper">
+                      <img class="avatar" src="img/avatars/photo.jpg" alt="Аватар пользователя">
+                    </div>
+                  </a> 
+                  <div class="date-technology">
+                    <a href="#">
+                      <div class="technology"> 
+                        <i class="fa-brands fa-css3-alt"></i>
+                      </div>
+                    </a>
+                    <time class="post-add">
+                      07.01.21 в 15:52
+                    </time>
+                    <!-- <a class="user-link" href="#">Артём</a> -->
+                  </div>
+                </div>
+                <!-- текст сообщения -->
+                <div class="text-post">
+                  <p>
+                    По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                    который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                    По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                  </p>
+                </div>
+                <!-- ссылка на ресурс -->
+                <a class="resource-link" href="#">
+                  <div class="resource" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="http//cccewefcdc.ru">
+                    <div class="text-link"> Читать </div>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                  </div>
+                </a>
+                <!-- лайк-комментарий -->
+                <div class="post-like-comment">
+                  <div class="comment-like">
+                    <button type="button" class="like-post-button"> 
+                      <i class="like-selector icon-color fa-thumbs-up fa-regular"></i>
+                      <div class="counter-likes">7</div> 
+                    </button> 
+                  </div>
+                  <div class="comment-like"> 
+                    <button type="button" class="like-post-button post-button-selector" data-bs-toggle="modal" data-bs-target="#staticComment"> 
+                      <i class="comment-selector icon-color fa-regular fa-comment"></i>
+                      <div class="counter-comments">8</div>
+                    </button> 
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+<!-- ModalComment -->
+         <div class="modal fade" id="staticComment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticCommentLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="logo-auth">
+                  <i class="fa-solid fa-laptop-code"></i>
+                  <a class="navbar-brand link-logo-auth" href="#">WebForYou</a>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="#" >
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Добавьте комментарий</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <button class="btn btn-primary btn-add-comment" type="submit">Добавить</button>
+                </form>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+                <div class="wrapper-comment-modal">
+                  <div class="user-add-comment">
+                    <a href="#">
+                      <div class="logo-img-wrapper-modal">
+                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      </div>
+                    </a>
+                    <div class="date-add-comment">
+                      <time class="post-add">
+                        07.01.21 в 15:52
+                      </time>
+                      <!-- <a class="user-link" href="#">Артём</a> -->
+                    </div>
+                  </div>
+                  <div class="text-comment">
+                    <p>
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+              </div>
+            </div>
+          </div>
+        </div>
+ <!-- ModalComment -->
+      </div>
     </main>
+    <script src="js/script.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
+    </script>
 </body>
 </html>
-
-
-
-<!-- <div class="links">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="https://www.sitepoint.com/blog/" class="fa-brands fa-youtube-square">Какой-то текст</a>
-            </div>
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="https://www.sitepoint.com/blog/" class="fa-brands fa-youtube-square">Какой-то текст</a>
-            </div>
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="https://www.sitepoint.com/blog/" class="fa-brands fa-youtube-square">Какой-то текст</a>
-            </div>
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="https://www.sitepoint.com/blog/" class="fa-brands fa-youtube-square">Какой-то текст</a>
-            </div>
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="https://www.sitepoint.com/blog/" class="fa-brands fa-youtube-square">Какой-то текст</a>
-            </div>
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="https://www.sitepoint.com/blog/" class="fa-brands fa-youtube-square">Какой-то текст</a>
-            </div>
-        </div>
-    </div>
-</div> -->

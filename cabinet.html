@@ -95,42 +95,39 @@
       </div>
  <!-- Modal -->
     <div class="section-1 container-fluid"></div>
-    <div class="container-fluid section-registr">
+    <div class="container-fluid section-add-message">
         <div class="wrapper-form-registr">
             <!-- form-registr -->
             <form>
-              <div class="logo-choice">
-                <div class="logo-img-wrapper margin-img-wrapper">
-                  <img class="avatar" src="img/avatars/avatar_user.jpg" alt="Аватар пользователя">
-                  <!-- <div class="div-avatar">
-
-                  </div> -->
-                  <input type="file" class="custom-file-input">
-                </div>
-              </div>
                 <div class="mb-3">
-                  <label for="exampleInputLogin1" class="form-label">Логин</label>
-                  <input type="text" class="form-control" id="exampleInputLogin1">
+                    <label for="exampleFormControlTextarea2" class="form-label">Добавьте текст сообщения</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputLink" class="form-label">Ссылка на источник</label>
+                  <input type="text" class="form-control" id="exampleInputLink">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
-                  <div id="passHelp" class="form-text">
-                    Ваш пароль должен состоять из 8-20 символов, содержать буквы и цифры 
-                    и не должен содержать пробелов, специальных символов или эмодзи. 
-                 </div>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option selected>Выберите технологию</option>
+                        <option value="1">HTML</option>
+                        <option value="2">CSS</option>
+                        <option value="3">JS</option>
+                        <option value="4">PHP</option>
+                        <option value="5">Python</option>
+                    </select>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword2" class="form-label">Пароль повторно</label>
-                    <input type="password" class="form-control" id="exampleInputPassword2">
-                    <div id="passHelp" class="form-text">
-                        Пароли должны совпадать.
-                   </div>
+                <div class="mb-3 add-image">
+                    <label for="exampleInputImage" class="form-label">Добавьте изображение</label>
+                    <input type="file">
                 </div>
-                <button type="submit" class="btn btn-primary btn-registr">Зарегистрироваться</button>
+                <div class="add-message">
+                    <button type="submit" class="btn btn-primary btn-add-message">Отправить сообщение</button>
+                </div>
             </form>
             <!-- form-registr -->
         </div>
+    </div>
     </div>
     </main>
     <script src="js/bootstrap.bundle.min.js"></script>
