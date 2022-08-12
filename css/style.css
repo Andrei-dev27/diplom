@@ -35,6 +35,7 @@ h3 {
 }
 a {
     text-decoration: none;
+    color: #fff;
 }
 .btn:hover {
     background-color: #4aa4e0;
@@ -137,6 +138,16 @@ a {
 }
 .top-menu .nav-item .nav-link:hover::after {
     transform: scale(1);
+}
+.nav-logo-img-wrapper {
+    width: 40px;
+    height: 40px;
+}
+.nav-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 9999px;
 }
 
 /* header */
@@ -375,12 +386,16 @@ a {
 .btn-auth {
     max-width: 120px;
     margin-top: 20px;
-    
+    display: flex;
+    justify-content: space-around;
 }
 /* .btn-auth:hover {
     background-color: #4aa4e0;
 
 } */
+.btn-margin-left {
+    margin-left: 5px;
+}
 .logo-auth {
     color: rgba(56, 87, 170, 0.87);
 }
@@ -445,6 +460,10 @@ a {
     width: 48%;
     /* background-color: #a9d5f1; */
 }
+.btn-footer-width-a {
+    width: 100%;
+    /* background-color: #a9d5f1; */
+}
 /* .btn-footer-width:hover {
     background-color: #4aa4e0;
 } */
@@ -459,7 +478,7 @@ a {
     width: 100%;
 }
 .section-registr {
-    max-width: 650px;
+    max-width: 675px;
     display: flex;
     justify-content: center;
     border: 2px solid rgb(235, 238, 240);
@@ -468,7 +487,7 @@ a {
 .wrapper-form-registr{
     margin-top: 30px;
     width: 85%;
-    height: 500px;
+    height: 525px;
     display: flex;
     flex-direction: column;
 }
@@ -483,6 +502,12 @@ a {
 }
 .custom-file-input {
     color: transparent;
+}
+.post-form__error {
+	font-size: 16px;
+	color: rgb(255, 0, 0);
+	margin: 10px 0 10px 0;
+	text-align: center;
 }
 
 /* registr */
@@ -507,6 +532,9 @@ a {
 /* .btn-add-message:hover {
     background-color: #4aa4e0;
 } */
+.margin-message-text {
+    margin-top: 15px;
+}
 /* cabinet */
 
 

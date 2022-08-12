@@ -48,3 +48,9 @@ FOREIGN KEY(user_id) REFERENCES users(id),
 post_id INT NOT NULL,
 FOREIGN KEY(post_id) REFERENCES posts(id)
 );
+
+INSERT INTO categories (categorie_name) VALUES ('HTML');
+INSERT INTO categories (categorie_name) VALUES ('CSS');
+INSERT INTO categories (categorie_name) VALUES ('JS');
+INSERT INTO categories (categorie_name) VALUES ('PHP');
+INSERT INTO categories (categorie_name) VALUES ('Python');   
