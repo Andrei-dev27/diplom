@@ -1,3 +1,44 @@
+// onclick="showMessage(<?php echo $post['id']?>)"
+window.onload = function() {
+    document.querySelector('#modal-add-comment').onclick = function(){
+        ajaxPost();
+    }
+    // document.querySelector('#').onclick = function(){
+    //     ajaxPostId();
+    // }
+}
+
+function ajaxPost() {
+    let textComment = document.getElementById('text_comment').value;
+    let postID = document.getElementById('input_modal_post_id').value;
+
+    let xml = new XMLHttpRequest();
+    xml.onreadystatechange = function() {
+        if(xml.readyState == 4 && xml.status == 200) {
+            document.querySelector('#answer').innerHTML = '<div> Ответ пришёл! </div>';
+        }
+    }
+    xml.open("POST", "http://localhost/microblog/includes/create_comment.php", true);
+    xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xml.send('text_comment='+ textComment + '&input_modal_post_id=' + postID);
+    // alert(number)
+}
+
+function ajaxPostId(postId) {
+    let postId_2 = postId;
+    let xml_2 = new XMLHttpRequest();
+    xml_2.onreadystatechange = function() {
+        if(xml_2.readyState == 4 && xml_2.status == 200) {
+            document.querySelector('#answer').innerHTML = '<div> ID пришёл! </div>';
+        }
+    }
+    xml_2.open("POST", "http://localhost/microblog/includes/save_id.php", true); 
+    xml_2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xml_2.send('ajax_post_id='+ postId_2);
+}
+// method="post" action="includes/create_comment.php"
+
+
 let userHome = document.querySelector('a .nav-link, .user-home');
 let user = document.querySelector('.fa-circle-user');
 
@@ -29,9 +70,6 @@ likeButton.addEventListener('click', ()=> {
     }
 })
 
-let commentButton = document.querySelector('.post-button-selector');
-let comment = document.querySelector('.comment-selector');
-let postIds = document.querySelectorAll('.post_id').getAttribute('value');
 
 // commentButton.addEventListener('mouseover', ()=> {
 //     if(comment.classList.contains('fa-regular')) {
@@ -46,12 +84,26 @@ let postIds = document.querySelectorAll('.post_id').getAttribute('value');
 //     }
 // })
 
-commentButton.addEventListener('click', ()=> {
-    for (let postId of postIds) {
-        alert(postId);
-      }
-})
+let commentButtons = document.querySelectorAll('.post-button-selector');
+let comment = document.querySelector('.comment-selector');
+// let postId = document.querySelector('.post_id').getAttribute('value');
 
+
+
+let modalPostId = document.querySelector('div .modal_post_id');
+function showMessage(postIdPhp) {
+    if(typeof modalPostId != null && typeof modalPostId != undefined) {
+        if(typeof postIdPhp != null && typeof postIdPhp != undefined) {
+            // alert(postIdPhp)
+            return modalPostId.innerHTML = `<input id="input_modal_post_id" type="hidden" name="input_modal_post_id" value="${postIdPhp}">`
+        }
+    }
+
+    // const ul = document.modalPostId.createElement("ul");
+    // return ul.innerHTML = `<li> ${postIdPhp} </li>`;
+    // modalPostId.innerHTML = ' '; //`name='post_id_modal' value='13'`
+    // return modalPostId;
+}
 
 // после загрузки страницы
 // window.addEventListener('load', function () {

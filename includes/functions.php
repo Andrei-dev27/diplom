@@ -234,8 +234,35 @@ function search_posts($search_word) {
     } 
 }
 
-function comment_id_session($post_id) {
-    $_SESSION['post_id_modal'] = $post_id;
-    redirect(get_url('index.php?commentModal=open') );
+// function comment_id_session($post_id) {
+//$_SESSION['post_id_modal'] = $post_id;
+//     redirect(get_url('index.php?commentModal=open') );
+// }
+function add_comment($post_id, $comment_text) {
+    $user_id = $_SESSION['user']['id'];
+    db_query("INSERT INTO `comments` (`id`, `user_id`, `post_id`, `comment_date`, `comment_text`) VALUES (NULL, $user_id, $post_id, NULL, '$comment_text')");
 }
+
+function create_comment($comment) {
+    if(isset($comment['text_comment']) && isset($comment['input_modal_post_id'])) {
+        add_comment($comment['input_modal_post_id'], $comment['text_comment']);
+        // redirect(get_url());
+    }
+}
+
+function output_comment($post_id) {
+    return db_query("SELECT comments.*, users.user_image, users.role_id
+    FROM `comments` JOIN `users` ON comments.user_id=users.id
+    WHERE comments.post_id={$post_id}") -> fetchAll();
+}
+
+function save_id($post_id) {
+    // $ajax_post_id = 0; 
+    if(isset($post_id)) {
+       return $post_id;
+    } else {
+        return 0;
+    }
+}
+
 

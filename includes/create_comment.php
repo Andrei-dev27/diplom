@@ -2,4 +2,4 @@
 include_once "functions.php";
 
 // echo 'Мы на месте!';
-if(isset($_POST['post_id_for_comment'])) comment_id_session($_POST['post_id_for_comment']);
+if(isset($_POST['text_comment']) && isset($_POST['input_modal_post_id']))  create_comment($_POST);

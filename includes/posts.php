@@ -2,7 +2,6 @@
   foreach($posts as $post) { ?>
     <!-- основной информационный блок -->
     <div class="section container-fluid p-5">
-    <input class="post_id" type="hidden" name="post_id_for_modal" value="<?php echo $post['id']?>">
     <!-- кнопка удаления -->
         <div class="close">
           <?php if($_SESSION['user']['role_id'] == 1 || $_SESSION['user']['id'] == $post['user_id']) { ?>
@@ -110,20 +109,27 @@
                     </button> 
                   </div>
                   <div class="comment-like"> 
-                  <button type="submit" class="like-post-button post-button-selector" data-bs-toggle="modal" data-bs-target="#commentModal"> 
+
+                  <button id="<?php echo $post['id']?>" type="submit" class="like-post-button post-button-selector" data-bs-toggle="modal" data-bs-target="#ModalComment<?php echo $post['id']?>"> 
                         <i class="comment-selector icon-color fa-regular fa-comment"></i>
                         <div class="counter-comments">8</div>
                   </button> 
-                  <!-- <form method="post" action="includes/create_comment.php">
+                  <!-- <form> 
+                    <input id="post_id_for_modal" type="hidden" name="post_id_for_modal" value="<?php echo $post['id']?>">
 
                   </form> -->
+                  <!-- <button id="<?php echo $post['id']?>" type="button" class="like-post-button post-button-selector" onclick="ajaxPostId(<?php echo $post['id']?>)" data-bs-toggle="modal" data-bs-target="#commentModal"> 
+                      <i class="comment-selector icon-color fa-regular fa-comment"></i>
+                      <div class="counter-comments">8</div>
+                  </button>  -->
                   </div>
                 </div>
               </div>
             </div>
         </div>
         <!-- ModalComment -->
-    <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticCommentLabel" aria-hidden="true">
+    <?php $comments=output_comment($post['id']) ?>
+    <div class="modal fade" id="ModalComment<?php echo $post['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticCommentLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
@@ -134,79 +140,43 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form method="post" action="includes/error_body.php"> 
+                <form> 
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Добавьте комментарий</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text_comment"></textarea>
+                    <textarea class="form-control" id="text_comment" rows="3" name="text_comment"></textarea> 
+                    <div class="modal_post_id"> <input id="input_modal_post_id" type="hidden" name="input_modal_post_id" value="<?php echo $_SESSION['ajax_post_id']; ?>">  </div>
                   </div>
-                  <button class="btn btn-primary btn-add-comment" type="submit">Добавить</button>
+                  <button id="modal-add-comment" class="btn btn-primary btn-add-comment" type="button">Добавить</button>
                 </form>
-                <div class="wrapper-comment-modal">
-                  <div class="user-add-comment">
-                    <a href="#">
-                      <div class="logo-img-wrapper-modal">
-                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                <div id="answer"></div>
+                <?php if($comments) {
+                  foreach($comments as $comment) {?>
+                      <div class="wrapper-comment-modal">
+                      <div class="user-add-comment">
+                        <a href="#">
+                          <div class="logo-img-wrapper-modal">
+                            <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                          </div>
+                        </a>
+                        <div class="date-add-comment">
+                          <time class="post-add">
+                            07.01.21 в 15:52
+                          </time>
+                          <!-- <a class="user-link" href="#">Артём</a> -->
+                        </div>
                       </div>
-                    </a>
-                    <div class="date-add-comment">
-                      <time class="post-add">
-                        07.01.21 в 15:52
-                      </time>
-                      <!-- <a class="user-link" href="#">Артём</a> -->
-                    </div>
-                  </div>
-                  <div class="text-comment">
-                    <p>
-                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
-                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
-                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
-                    </p>
-                  </div>
-                </div>
-                <div class="wrapper-comment-modal">
-                  <div class="user-add-comment">
-                    <a href="#">
-                      <div class="logo-img-wrapper-modal">
-                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
+                      <div class="text-comment">
+                        <p>
+                          По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
+                          который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
+                          По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
+                        </p>
                       </div>
-                    </a>
-                    <div class="date-add-comment">
-                      <time class="post-add">
-                        07.01.21 в 15:52
-                      </time>
-                      <!-- <a class="user-link" href="#">Артём</a> -->
                     </div>
-                  </div>
-                  <div class="text-comment">
-                    <p>
-                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
-                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
-                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
-                    </p>
-                  </div>
-                </div>
-                <div class="wrapper-comment-modal">
-                  <div class="user-add-comment">
-                    <a href="#">
-                      <div class="logo-img-wrapper-modal">
-                        <img class="avatar-modal" src="img/avatars/Фото Жогаль Е.jpg" alt="Аватар пользователя">
-                      </div>
-                    </a>
-                    <div class="date-add-comment">
-                      <time class="post-add">
-                        07.01.21 в 15:52
-                      </time>
-                      <!-- <a class="user-link" href="#">Артём</a> -->
-                    </div>
-                  </div>
-                  <div class="text-comment">
-                    <p>
-                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum, 
-                      который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
-                      По своей сути рыбатекст является альтернативой традиционному lorem ipsum 
-                    </p>
-                  </div>
-                </div>
+                <?php }
+                } else{
+                  echo 'Нет комментариев!';
+                }?>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
