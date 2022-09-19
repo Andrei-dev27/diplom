@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-      WebForYou
+      WebForYou – микроблог для веб-разработчиков
     </title>
+    <meta name="description" content="Актуальные новости в мире веб-разработки. Новая информация о самых востребованных технологиях: HTML, CSS, JS, PHP, Python">
+    <meta name="keywords" content="веб-разработка, микроблог, новости, HTML, CSS, JS, PHP, Python">
     <link rel="icon" href="img/laptop-code-solid.svg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/iconsfont.css">

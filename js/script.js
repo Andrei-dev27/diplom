@@ -1,21 +1,18 @@
-// onclick="showMessage(<?php echo $post['id']?>)"
-window.onload = function() {
-    document.querySelector('#modal-add-comment').onclick = function(){
-        ajaxPost();
-    }
-    // document.querySelector('#').onclick = function(){
-    //     ajaxPostId();
-    // }
-}
+// window.onload = function() {
+//     document.querySelector('#modal-add-comment13').onclick = function(){
+//         ajaxPost();
+//     }
+// }
 
-function ajaxPost() {
-    let textComment = document.getElementById('text_comment').value;
-    let postID = document.getElementById('input_modal_post_id').value;
+function ajaxPost(postId) {
+    let textComment = document.getElementById(`text_comment${postId}`).value;
+    let postID = document.getElementById(`input_modal_post_id${postId}`).value;
 
     let xml = new XMLHttpRequest();
     xml.onreadystatechange = function() {
         if(xml.readyState == 4 && xml.status == 200) {
-            document.querySelector('#answer').innerHTML = '<div> Ответ пришёл! </div>';
+            document.querySelector(`#answer${postId}`).innerHTML = this.responseText;
+            // window.location.reload()
         }
     }
     xml.open("POST", "http://localhost/microblog/includes/create_comment.php", true);
@@ -24,18 +21,18 @@ function ajaxPost() {
     // alert(number)
 }
 
-function ajaxPostId(postId) {
-    let postId_2 = postId;
-    let xml_2 = new XMLHttpRequest();
-    xml_2.onreadystatechange = function() {
-        if(xml_2.readyState == 4 && xml_2.status == 200) {
-            document.querySelector('#answer').innerHTML = '<div> ID пришёл! </div>';
-        }
-    }
-    xml_2.open("POST", "http://localhost/microblog/includes/save_id.php", true); 
-    xml_2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xml_2.send('ajax_post_id='+ postId_2);
-}
+// function ajaxPostId(postId) {
+//     let postId_2 = postId;
+//     let xml_2 = new XMLHttpRequest();
+//     xml_2.onreadystatechange = function() {
+//         if(xml_2.readyState == 4 && xml_2.status == 200) {
+//             document.querySelector('#answer').innerHTML = '<div> ID пришёл! </div>';
+//         }
+//     }
+//     xml_2.open("POST", "http://localhost/microblog/includes/save_id.php", true); 
+//     xml_2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xml_2.send('ajax_post_id='+ postId_2);
+// }
 // method="post" action="includes/create_comment.php"
 
 
@@ -135,20 +132,35 @@ function showMessage(postIdPhp) {
 
     // элемент, содержащий контент модального окна (например, имеющий id="modal")
     const elemModal_auth = document.querySelector('#authModal');
-    const elemModal_close = document.querySelector('#closeModal');
     const elemModal_comment = document.querySelector('#commentModal');
     // активируем элемент в качестве модального окна с параметрами по умолчанию
     const modal_auth = new bootstrap.Modal(elemModal_auth);
-    const modal_close = new bootstrap.Modal( elemModal_close);
+    // const modal_close = new bootstrap.Modal( elemModal_close);
+    // else if(window.location.search == '?closeModal=open') {
+    //     modal_close.show();
+    // }
     const modal_comment = new bootstrap.Modal( elemModal_comment);
     if(window.location.search == '?authModal=open') {
         modal_auth.show();
-    } else if(window.location.search == '?closeModal=open') {
-        modal_close.show();
     } else if(window.location.search == '?commentModal=open') {
         modal_comment.show();
     }
   });
+
+  function closeModal(postId) {
+    // alert(`ID поста для удаления: ${postId}`)
+    const elemModal_close = document.querySelector(`#closeModal${postId}`);
+    const modal_close = new bootstrap.Modal( elemModal_close);
+    if(window.location.search == '?closeModal=open') {
+        modal_close.show();
+    }
+  }
+
+//   <form action="<?php echo get_url('includes/delete_post.php'); ?>" method="post">
+//   <input type="hidden" name="post_id" value="<?php echo $post['id']?>">
+//   <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#closeModal<?php echo $post['id']?>" onclick="closeModal(<?php echo $post['id']?>)"></button>
+// </form>
+  
   
 
 

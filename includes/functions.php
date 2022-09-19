@@ -198,17 +198,20 @@ function get_posts($id = 0) {
             return db_query("SELECT posts.*, users.user_name, users.user_image, users.role_id, categories.categorie_name
             FROM `posts` JOIN `users` ON posts.user_id=users.id 
             JOIN `categories` ON posts.categorie_id=categories.id 
-            WHERE posts.user_id=$id") -> fetchAll();
+            WHERE posts.user_id=$id
+            ORDER BY posts.post_date DESC") -> fetchAll();
         } else if(isset($_GET['cat_id']) && !empty($_GET['cat_id'])) {
             return db_query("SELECT posts.*, users.user_name, users.user_image, users.role_id, categories.categorie_name
             FROM `posts` JOIN `users` ON posts.user_id=users.id 
             JOIN `categories` ON posts.categorie_id=categories.id 
-            WHERE posts.categorie_id=$id") -> fetchAll();
+            WHERE posts.categorie_id=$id
+            ORDER BY posts.post_date DESC") -> fetchAll();
         }
     }
     return db_query("SELECT posts.*, users.user_name, users.user_image, users.role_id, categories.categorie_name
     FROM `posts` JOIN `users` ON posts.user_id=users.id 
-    JOIN `categories` ON posts.categorie_id=categories.id") -> fetchAll();
+    JOIN `categories` ON posts.categorie_id=categories.id
+    ORDER BY posts.post_date DESC") -> fetchAll();
 }
 
 function get_categories() {
@@ -216,13 +219,14 @@ function get_categories() {
 }
 
 function delete_post($post_id) {
+    db_query("DELETE FROM `comments` WHERE post_id=$post_id");
     db_query("DELETE FROM `posts` WHERE id=$post_id");
     redirect(get_url());
 }
 
 function id_session($post_id) {
     $_SESSION['post_id_modal'] = $post_id;
-    redirect(get_url('index.php?closeModal=open') );
+    redirect(get_url("index.php?closeModal=open") );
 }
 
 function search_posts($search_word) {
@@ -243,17 +247,29 @@ function add_comment($post_id, $comment_text) {
     db_query("INSERT INTO `comments` (`id`, `user_id`, `post_id`, `comment_date`, `comment_text`) VALUES (NULL, $user_id, $post_id, NULL, '$comment_text')");
 }
 
-function create_comment($comment) {
-    if(isset($comment['text_comment']) && isset($comment['input_modal_post_id'])) {
-        add_comment($comment['input_modal_post_id'], $comment['text_comment']);
-        // redirect(get_url());
-    }
-}
-
 function output_comment($post_id) {
     return db_query("SELECT comments.*, users.user_image, users.role_id
     FROM `comments` JOIN `users` ON comments.user_id=users.id
     WHERE comments.post_id={$post_id}") -> fetchAll();
+}
+
+// function output_comment_2($post_id) {
+//     db_query("SELECT comments.*, users.user_image, users.role_id
+//     FROM `comments` JOIN `users` ON comments.user_id=users.id
+//     WHERE comments.post_id={$post_id}") -> fetchAll();
+// }
+
+function create_comment($comment) {
+    if(isset($comment['text_comment']) && isset($comment['input_modal_post_id'])) {
+        add_comment($comment['input_modal_post_id'], $comment['text_comment']);
+        //функция, выгружающая все комментарии из БД
+        $all_comments = output_comment($comment['input_modal_post_id']);
+        if($all_comments) {
+            return $all_comments;
+        } else {
+            return 10;
+        }
+    }
 }
 
 function save_id($post_id) {

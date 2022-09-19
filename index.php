@@ -6,7 +6,6 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
     $posts = get_posts($_GET['cat_id']);
 } else if(isset($_GET['search']) && !empty($_GET['search'])) {
     $posts = search_posts($_POST['search']);
-    // $posts = get_posts();
 } else{
     $posts = get_posts();
 }
