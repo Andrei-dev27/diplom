@@ -5,7 +5,6 @@
     <!-- кнопка удаления -->
         <div class="close">
           <?php if($_SESSION['user']['role_id'] == 1 || $_SESSION['user']['id'] == $post['user_id']) { ?>
-            <!-- <a href="index.php?modal=op"> </a> -->
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#closeModal<?php echo $post['id']?>"> 
               </button>
           <?php } ?>
@@ -14,7 +13,6 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header modal-header-flex">
-                    <!-- <h5 class="modal-title" id="closeModalLabel">Хотите удалить сообщение?</h5> -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body modal-footer-flex">
@@ -27,9 +25,6 @@
                         <a class="btn-footer-width" href="includes/delete_post.php?post_id=<?php echo $post['id']?>"><button type="button" class="btn btn-primary btn-footer-width-a"> Удалить </button></a>
                       </div>
                   </div>
-                  <!-- <div class="modal-footer modal-footer-flex">
-
-                  </div> -->
                 </div>
               </div>
             </div>
@@ -80,7 +75,6 @@
                     <time class="post-add">
                       <?php echo date('d.m.y в H:i', strtotime($post['post_date']) );?>
                     </time>
-                    <!-- <a class="user-link" href="#">Артём</a> -->
                   </div>
                 </div>
                 <!-- текст сообщения -->
@@ -98,22 +92,28 @@
                 </a>
                 <!-- лайк-комментарий -->
                 <div class="post-like-comment">
-                  <div class="comment-like">
-                    <button type="button" class="like-post-button"> 
-                      <i class="like-selector icon-color fa-thumbs-up fa-regular"></i>
-                      <div class="counter-likes">7</div> 
-                    </button> 
-                  </div>
+                    <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {?>
+                      <div class="comment-like">
+                        <button type="button" class="like-post-button"> 
+                          <i id="like<?php echo $post['id']?>" class="like-selector icon-color fa-thumbs-up <?php echo regular_solid($post['id'], $_SESSION['user']['id'])?>" onclick="getRemoveLike(<?php echo $post['id']?>, <?php echo $_SESSION['user']['id']?>)"></i>
+                          <div id="counter-likes<?php echo $post['id']?>" class="counter-likes"> <?php echo likes_count($post['id']) ?> </div> 
+                        </button>
+                      </div>
+                    <?php } else{ ?>
+                      <div class="comment-like"> <!-- data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Для этого действия необходима авторизация!" -->
+                        <button type="button" class="like-post-button"> 
+                          <i id="like<?php echo $post['id']?>" class="like-selector icon-color fa-thumbs-up fa-regular"></i>
+                          <div id="counter-likes<?php echo $post['id']?>" class="counter-likes"><?php echo likes_count($post['id']) ?></div> 
+                        </button>
+                      </div> 
+                    <?php } ?>   
                   <div class="comment-like"> 
-
                   <button id="<?php echo $post['id']?>" type="submit" class="like-post-button post-button-selector" data-bs-toggle="modal" data-bs-target="#ModalComment<?php echo $post['id']?>"> 
                         <i class="comment-selector icon-color fa-regular fa-comment"></i>
-                        <div class="counter-comments">8</div>
+                        <div id="counter-comments<?php echo $post['id']?>" class="counter-comments"> 
+                          <?php echo get_comments_count($post['id']); ?> 
+                        </div>
                   </button> 
-                  <!-- <button id="<?php echo $post['id']?>" type="button" class="like-post-button post-button-selector" onclick="ajaxPostId(<?php echo $post['id']?>)" data-bs-toggle="modal" data-bs-target="#commentModal"> 
-                      <i class="comment-selector icon-color fa-regular fa-comment"></i>
-                      <div class="counter-comments">8</div>
-                  </button>  -->
                   </div>
                 </div>
               </div>
@@ -134,12 +134,15 @@
               <div class="modal-body">
                 <form> 
                   <div class="mb-3">
-                    <label for="exampleFormControlTextarea<?php echo $post['id']?>" class="form-label">Добавьте комментарий</label>
+                    <label for="exampleFormControlTextarea<?php echo $post['id']?>" class="form-label">
+                      Добавьте комментарий
+                    </label>
                     <textarea class="form-control" id="text_comment<?php echo $post['id']?>" rows="3" name="text_comment"></textarea> 
                     <div class="modal_post_id"> <input id="input_modal_post_id<?php echo $post['id']?>" type="hidden" name="input_modal_post_id" value="<?php echo $post['id']; ?>">  </div>
                   </div>
-                  <button id="modal-add-comment<?php echo $post['id']?>" class="btn btn-primary btn-add-comment" type="button" onclick="ajaxPost(<?php echo $post['id']?>)">Добавить</button>
+                  <button id="modal-add-comment<?php echo $post['id']?>" class="btn btn-primary btn-add-comment" type="button" onclick="getComments(<?php echo $post['id']?>)">Добавить</button>
                 </form>
+                <div class="post-form__error"><?php echo $error; ?></div>
                 <div id="answer<?php echo $post['id']?>">
                   <?php if($comments) {
                     foreach($comments as $comment) {?>
@@ -152,7 +155,6 @@
                           </a>
                           <div class="date-add-comment">
                             <time class="post-add"> <?php echo date('d.m.y в H:i', strtotime($comment['comment_date']) );?> </time>
-                            <!-- <a class="user-link" href="#">Артём</a> -->
                           </div>
                         </div>
                         <div class="text-comment">

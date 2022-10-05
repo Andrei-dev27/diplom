@@ -2,9 +2,9 @@
 include_once "functions.php";
 
 // echo 'Мы на месте!';
-if(isset($_POST['text_comment']) && isset($_POST['input_modal_post_id'])) {
+if(strlen($_POST['text_comment']) > 0 && isset($_POST['input_modal_post_id'])) {
     $new_comments = create_comment($_POST);
-    if(isset($new_comments) && $new_comments != 10) {
+    if(isset($new_comments)) {
         foreach($new_comments as $new_comment) {
             $date = date('d.m.y в H:i', strtotime($new_comment['comment_date']) );
             $image = $new_comment['user_image'];
@@ -25,11 +25,11 @@ if(isset($_POST['text_comment']) && isset($_POST['input_modal_post_id'])) {
                 </div>
             </div>";
         }
-    } else if(isset($new_comments) && $new_comments == 10){
-        echo "Функция, выгружающая все комментарии из БД, ничего не возвращает!";
     } else{
         echo "Комментарии не взяты из БД!";
     }
+} else {
+    echo "Нет комментария!";
 }  
 
 

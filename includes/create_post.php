@@ -7,7 +7,7 @@
                     <textarea type="text" class="form-control" id="exampleFormControlTextarea2" rows="3" name="message_text"></textarea>
                   </div>
                     <div id="passHelp" class="form-text margin-message-text">
-                        Ваше сообщение не должно содержать болле 300 символов.                   
+                        Ваше сообщение должно содержать от 20 до 300 символов.                   
                     </div>
                 <div class="mb-3">
                   <label for="exampleInputLink" class="form-label">Ссылка на источник</label>

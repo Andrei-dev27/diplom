@@ -1,40 +1,63 @@
-// window.onload = function() {
-//     document.querySelector('#modal-add-comment13').onclick = function(){
-//         ajaxPost();
-//     }
-// }
-
-function ajaxPost(postId) {
+function getComments(postId) {
     let textComment = document.getElementById(`text_comment${postId}`).value;
     let postID = document.getElementById(`input_modal_post_id${postId}`).value;
 
     let xml = new XMLHttpRequest();
     xml.onreadystatechange = function() {
         if(xml.readyState == 4 && xml.status == 200) {
-            document.querySelector(`#answer${postId}`).innerHTML = this.responseText;
-            // window.location.reload()
+            if(this.responseText == 'Нет комментария!') {
+                document.querySelector('.post-form__error').innerHTML = this.responseText;
+            } else{
+                document.querySelector(`#answer${postId}`).innerHTML = this.responseText;
+                document.querySelector('.post-form__error').innerHTML = '';
+                let wrapperComments = document.querySelector(`#answer${postId}`);
+                let classesComments = wrapperComments.querySelectorAll('.wrapper-comment-modal');
+                document.querySelector(`#counter-comments${postId}`).innerHTML = classesComments.length;
+            }
         }
     }
     xml.open("POST", "http://localhost/microblog/includes/create_comment.php", true);
     xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xml.send('text_comment='+ textComment + '&input_modal_post_id=' + postID);
-    // alert(number)
 }
 
-// function ajaxPostId(postId) {
-//     let postId_2 = postId;
-//     let xml_2 = new XMLHttpRequest();
-//     xml_2.onreadystatechange = function() {
-//         if(xml_2.readyState == 4 && xml_2.status == 200) {
-//             document.querySelector('#answer').innerHTML = '<div> ID пришёл! </div>';
-//         }
-//     }
-//     xml_2.open("POST", "http://localhost/microblog/includes/save_id.php", true); 
-//     xml_2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     xml_2.send('ajax_post_id='+ postId_2);
-// }
-// method="post" action="includes/create_comment.php"
+function addRemoveLike(postId, userId, addRemove) {
+    // alert(`${postId}, ${userId}, ${addRemove}`)
+    let xml2 = new XMLHttpRequest()
+    xml2.onreadystatechange = function() {
+        if(xml2.readyState == 4 && xml2.status == 200) {
+            document.querySelector(`#counter-likes${postId}`).innerHTML = this.responseText;
+            // alert(this.responseText)
+        }
+    }
+    xml2.open("POST", "http://localhost/microblog/includes/get_remove_likes.php", true)
+    xml2.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xml2.send('post_id='+ postId + '&user_id=' + userId + '&add_remove=' + addRemove)
 
+}
+
+function getRemoveLike(postId, userId) {
+    // let likeButton = document.querySelector('.like-post-button');
+    let like = document.querySelector(`#like${postId}`); //i .fa-thumbs-up, .fa-regular
+
+        if(like.classList.contains('fa-regular')) {
+            like.classList.add('fa-solid')
+            like.classList.remove('fa-regular')
+            if(like.classList.contains('fa-solid')) {
+                let label = 'add'
+                addRemoveLike(postId, userId, label)
+            }
+        } else if(like.classList.contains('fa-solid')) {
+            like.classList.add('fa-regular')
+            like.classList.remove('fa-solid') 
+            if(like.classList.contains('fa-regular')) {
+                let label = 'remove'
+                addRemoveLike(postId, userId, label)
+            }
+        }
+}
+
+//<?php echo regular_solid($post['id'], $_SESSION['user']['id'])?>
 
 let userHome = document.querySelector('a .nav-link, .user-home');
 let user = document.querySelector('.fa-circle-user');
@@ -53,20 +76,6 @@ if(user) {
         }
     })
 }
-
-let likeButton = document.querySelector('.like-post-button');
-let like = document.querySelector('.like-selector'); //i .fa-thumbs-up, .fa-regular
-
-likeButton.addEventListener('click', ()=> {
-    if(like.classList.contains('fa-regular')) {
-        like.classList.add('fa-solid')
-        like.classList.remove('fa-regular')
-    } else if(like.classList.contains('fa-solid')) {
-        like.classList.add('fa-regular')
-        like.classList.remove('fa-solid')
-    }
-})
-
 
 // commentButton.addEventListener('mouseover', ()=> {
 //     if(comment.classList.contains('fa-regular')) {

@@ -162,7 +162,10 @@ function create_post($post) {
     if(empty($post) || !isset($post)) return false;
 
     if(strlen($post['message_text']) > 300) {
-        $_SESSION['error'] = 'Сообщение превышает допустимые размеры: сообщение не должно содержать болле 300 символов!';
+        $_SESSION['error'] = 'Сообщение не должно содержать болле 300 символов!';
+        redirect(get_url('add_post.php'));
+    } else if(strlen($post['message_text']) < 20) {
+        $_SESSION['error'] = 'Сообщение содержит менее 20 символов!';
         redirect(get_url('add_post.php'));
     }
 
@@ -264,11 +267,7 @@ function create_comment($comment) {
         add_comment($comment['input_modal_post_id'], $comment['text_comment']);
         //функция, выгружающая все комментарии из БД
         $all_comments = output_comment($comment['input_modal_post_id']);
-        if($all_comments) {
-            return $all_comments;
-        } else {
-            return 10;
-        }
+        if($all_comments) return $all_comments;
     }
 }
 
@@ -278,6 +277,32 @@ function save_id($post_id) {
        return $post_id;
     } else {
         return 0;
+    }
+}
+
+function get_comments_count($post_id) {
+    return db_query("SELECT COUNT(*) FROM `comments` WHERE comments.post_id=$post_id")->fetchColumn();
+    // return settype($count_comments, "string");
+}
+
+function add_like($post_id, $user_id) {
+    return db_query("INSERT INTO `likes` (`post_id`, `user_id`) VALUES ($post_id, $user_id)", true);
+}
+
+function remove_like($post_id, $user_id) {
+    return db_query("DELETE FROM `likes` WHERE `post_id` = $post_id AND `user_id` = $user_id", true);
+}
+
+function likes_count($post_id) {
+    return db_query("SELECT COUNT(*) FROM `likes` WHERE likes.post_id=$post_id")->fetchColumn();
+}
+
+function regular_solid($post_id, $user_id) {
+    $user_like = db_query("SELECT * FROM `likes` WHERE `post_id` = $post_id AND `user_id` = $user_id")->rowCount() > 0;
+    if($user_like > 0) {
+        return "fa-solid";
+    } else{
+        return "fa-regular";
     }
 }
 

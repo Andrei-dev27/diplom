@@ -45,10 +45,6 @@
                       <?php foreach($categories as $categorie) {?>
                         <li><a class="dropdown-item" href="index.php?cat_id=<?php echo $categorie['id']?>"> <?php echo $categorie['categorie_name'] ?> </a></li>
                       <?php } ?>  
-                      <!-- <li><a class="dropdown-item" href="#">CSS</a></li>
-                      <li><a class="dropdown-item" href="#">JS</a></li>
-                      <li><a class="dropdown-item" href="#">PHP</a></li>
-                      <li><a class="dropdown-item" href="#">Python</a></li> -->
                     </ul>
                   </div>
                 </li>
@@ -60,12 +56,8 @@
               </ul>
               <!-- правая часть -->
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#" id="icon-nav"> <i class="fa-solid fa-gear"></i> </a>
-                </li> -->
                 <li class="nav-item"  data-bs-toggle="modal" data-bs-target="#authModal">
                   <a class="nav-link user-home" href="#" id="icon-nav">
-                    <!-- data-bs-toggle="tooltip" data-bs-placement="bottom" title="Авторизация" -->
                     <?php if($_SESSION['user']) {?>
                       <div class="nav-logo-img-wrapper">
                         <img class="nav-avatar" src="<?php echo $_SESSION['user']['user_image']; ?>" alt="Аватар пользователя">
@@ -103,9 +95,8 @@
                 Впервые на сайте? Пройдите
                 <a href="<?php echo get_url('registr.php'); ?>" class="link-registr">регистрацию</a>
               </div>
-              <!-- $_SESSION['error'] -->
               <?php if($error) {?>
-                <div class="post-form__error"><?php echo $error; ?></div>
+                <div class="post-form__error"> <?php echo $error;?> </div>
               <?php }?>
               <form action="<?php echo get_url('includes/sign_in.php'); ?>" method="post">
                 <div class="row form-auth-flex">
@@ -117,23 +108,17 @@
                   </div>
                   <div class="btn-auth">
                     <button type="submit" class="btn btn-primary">Войти</button>
-                    <!-- ломает сайт -->
                     <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])) { ?>
                       <button type="button" class="btn btn-primary btn-margin-left">
                         <a href="<?php echo get_url('includes/logout.php'); ?>">Выйти</a>
                       </button>
                     <?php } ?>
-                    <!-- ломает сайт -->
                   </div>
                 </div>
               </form>
             </div>
-            <!-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
-            </div> -->
           </div>
         </div>
       </div>
-    <!-- div под header-->
+    <!-- ModalAuth-->
     <div class="section-1 container-fluid"> </div>
